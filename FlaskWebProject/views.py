@@ -168,7 +168,7 @@ def logout():
     :return: Redirect to login page
     """
     now = datetime.now(tz=tz.tzlocal())
-    app.logger.info('%s Successfully logged out at ', now.tzname(),
+    app.logger.info('Timezone [%s], Year[%s], Month[%s], Day[%s]: %s Successfully logged out at ', now.tzname(),
                     now.year, now.month, now.day, current_user)
     logout_user()
     if session.get("user"):  # Used MS Login
