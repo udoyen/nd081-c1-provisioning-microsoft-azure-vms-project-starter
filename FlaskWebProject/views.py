@@ -116,6 +116,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
+            # INFO: Added logs for login failures
             app.logger.warning('Timezone [%s], Year[%s], Month[%s], Day[%s]: Failed login: Invalid credentials',
                                now.tzname(),
                                now.year, now.month, now.day)
