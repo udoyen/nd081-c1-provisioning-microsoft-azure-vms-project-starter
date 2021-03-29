@@ -113,6 +113,7 @@ def login():
     form = LoginForm()
     now = datetime.now(tz=tz.tzlocal())
     if form.validate_on_submit():
+        # session['username'] = form.username.data
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
@@ -156,8 +157,9 @@ def authorized():
         session["user"] = result.get("id_token_claims")
         # Note: In a real app, we'd use the 'name' property from session["user"] below
         # Here, we'll use the admin username for anyone who is authenticated by MS
-        #INFO Added functionality to use current login user name 
-        user = User.query.filter_by(username=session["user"]).first()
+        #INFO Added functionality to use current login user name
+        # app.logger.info(f'Id: {User.get_id(self=)}')    
+        user = User.query.filter_by(id=1).first()
         login_user(user)
         _save_cache(cache)
     return redirect(url_for('home'))
