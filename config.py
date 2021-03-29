@@ -7,7 +7,7 @@ class Config(object):
     """
     Class to handle application configurations
     """
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret-key'
+    SECRET_KEY = os.environ.get('SECRET_KEY') #or 'secret-key'
 
     BLOB_ACCOUNT = os.environ.get('BLOB_ACCOUNT') #or 'ENTER_STORAGE_ACCOUNT_NAME'
     BLOB_STORAGE_KEY = os.environ.get('BLOB_STORAGE_KEY') #or 'ENTER_BLOB_STORAGE_KEY'
